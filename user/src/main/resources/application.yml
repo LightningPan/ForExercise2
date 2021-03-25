@@ -1,0 +1,27 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: user
+  datasource:
+    username: fortest
+    password: TP4298417197tp
+    url: jdbc:mysql://bj-cynosdbmysql-grp-7x6jbhw4.sql.tencentcdb.com:20577/user?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.cloud.entity
+logging:
+  level:
+    com:
+      cloud:
+        mapper: debug

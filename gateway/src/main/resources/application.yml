@@ -1,0 +1,26 @@
+
+server:
+  port: 8088
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: news
+          uri: lb://news
+          predicates:
+            - Path=/api/news/**
+          filters:
+            - StripPrefix=1
+        - id: user
+          uri: lb://user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
